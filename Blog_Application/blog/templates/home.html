@@ -12,7 +12,7 @@
             | <a href="{% url 'update-post' post.pk %}">Edit</a> || <a href="{% url 'delete-post' post.pk %}">Delete</a>
         {% endif %}
         <br/>
-    {{ post.body|slice:":100" }} </li> <hr/>
+    {{ post.body|slice:":150"|safe }} </li> <hr/>
 {% endfor %}
 </ul>
 
