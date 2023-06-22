@@ -3,16 +3,20 @@
 {% block title %} {{ post.title_tag }} {% endblock title %}
 
 {% block content %}
-    
-<h1> {{ post.title }} </h1>
-<small> By: {{ post.author.first_name }} {{ post.author.last_name }} </small> | <a href="{% url 'update-post' post.pk %}">Edit</a> || <a href="{% url 'delete-post' post.pk %}">Delete</a>
-<br/> {{ post.post_date }}
-<br/><hr/> <br/>
-{{ post.body }}
+
+{% if user.is_authenticated %}
+    <h1> {{ post.title }} </h1>
+    <small> By: {{ post.author.first_name }} {{ post.author.last_name }} </small> | <a href="{% url 'update-post' post.pk %}">Edit</a> || <a href="{% url 'delete-post' post.pk %}">Delete</a>
+    <br/> {{ post.post_date }}
+    <br/><hr/> <br/>
+    {{ post.body }}
 
 
-<br/> <br/>
+    <br/> <br/>
 
-<a href="{% url 'home' %}"><button type="button" class="btn btn-secondary">Back</button></a>
+    <a href="{% url 'home' %}"><button type="button" class="btn btn-secondary">Back</button></a>
+{% else %}
+    <strong> You are not allowed in this page!! </strong>
+{% endif %}
 
 {% endblock %}

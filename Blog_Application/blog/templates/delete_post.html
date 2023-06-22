@@ -4,16 +4,20 @@
 
 {% block content %}
 
-<h1> Delete Post... </h1>
-<br/>
-<h3> Delete: {{ post.title }} </h3>
+{% if user.is_authenticated %}
+    <h1> Delete Post... </h1>
+    <br/>
+    <h3> Delete: {{ post.title }} </h3>
 
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        <strong> Are you sure? </strong> <br/> <br/>
-        <button class="btn btn-danger">Delete</button>
-        
-</div>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            <strong> Are you sure? </strong> <br/> <br/>
+            <button class="btn btn-danger">Delete</button>
+            
+    </div>
+{% else %}
+    <strong> You are not allowed in this page!! </strong>
+{% endif %}
 
 {% endblock %}
