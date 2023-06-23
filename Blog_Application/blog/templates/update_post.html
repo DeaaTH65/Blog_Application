@@ -6,14 +6,17 @@
 
 {% if user.is_authenticated %}
     <h1> Update Post... </h1>
-
-    <div class="form-group">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-info">Update</button>
-            
-    </div>
+    {% if user.id == post.author.id %}
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-info">Update</button>
+                
+        </div>
+    {% else %}
+    <strong><br/> Mortal ! You are not capable of editing in this page!!! </strong>
+    {% endif %}
 {% else %}
     <strong> You are not allowed in this page!! </strong>
 {% endif %}
