@@ -14,6 +14,11 @@
             <button class="btn btn-info">Post</button>
             
     </div>
+
+    <script>
+        var name = "{{ user.id }}";
+        document.getElementById("authorID").value = name;
+    </script>
 {% else %}
     <strong> You are not allowed in this page!! </strong>
 {% endif %}
