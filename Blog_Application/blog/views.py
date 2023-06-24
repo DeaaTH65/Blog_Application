@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category
-from .forms import PostForm
+from .forms import PostForm, EditForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 
@@ -75,7 +75,7 @@ class AddPostView(CreateView):
 class UpdatePostView(UpdateView):
     model = Post
     template_name = 'update_post.html'
-    fields = ['title', 'title_tag', 'body']
+    fields = ['title', 'title_tag', 'body', 'snippets']
     
     
 class DeletePostView(DeleteView):
