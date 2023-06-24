@@ -14,6 +14,8 @@
     {% endif %}
     <br/> {{ post.post_date }}
     <br/><hr/> <br/>
+
+    <img src="{{ post.header_image.url }}"> <br/>
     {{ post.body|safe }}
 
 
