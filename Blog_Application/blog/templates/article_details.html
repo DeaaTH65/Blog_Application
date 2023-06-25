@@ -59,8 +59,10 @@
             <div class="card-body" style="height: 13rem; background-color: lightblue">
                 <h5 class="card-title">{{ post.author.username }}</h5>
                 <p class="small text-muted">
+                    <a href="#">Profile</a>
+
                     {% if post.author.profile.facebook_url %}
-                        <a href="{{ post.author.profile.facebook_url }}">Facebook</a>
+                        || <a href="{{ post.author.profile.facebook_url }}">Facebook</a>
                     {% endif %}  
                     {% if post.author.profile.github_url %}
                         || <a href="{{ post.author.profile.github_url }}">Github</a> 
