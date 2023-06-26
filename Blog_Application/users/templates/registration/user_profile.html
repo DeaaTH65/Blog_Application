@@ -8,28 +8,34 @@
 <h1> {{ user.username }} Profile </h1>
 
 <div class="row">
-    <div class="card" style="width: 10rem; height: 13rem;">
+    <div class="card" style="width: 25rem; height: 30rem; background-color: lightblue">
+        <div class="card-body">
         {% if page_user.profile_pic %}
-            <img src="{{ page_user.profile_pic.url }}" class="card-img" width=150, height=200,  alt="...">
+            <img src="{{ page_user.profile_pic.url }}" class="card-img" width=350, height=450,  alt="...">
         {% else %}
             <img src="{% static 'images/default_profile_pic.png' %}" class="card-img" width=250, height=200, alt="...">
-        {% endif %}
-        <h6 class="card-title">Profile Pic</h6>            
+        {% endif %}     
+        </div>             
     </div>
     <div class="col-sm-7">
       <div class="card">
-        <div class="card-body" style="height: 13rem; background-color: lightblue">
-            <h5 class="card-title">{{ page_user.user.first_name }} {{ page_user.user.last_name }}</h5>
-            <p class="small text-muted">
-                {% if page_user.facebook_url %}
-                    || <a href="{{ page_user.facebook_url }}">Facebook</a>
-                {% endif %}  
-                {% if page_user.github_url %}
-                    || <a href="{{ page_user.github_url }}">Github</a> 
-                {% endif %}
-            </p>
-          <p class="card-text">{{ page_user.bio }}</p>
-          
+        <div class="card-body" style="height: 30rem; background-color: lightblue">
+            <div class="card-body">
+                <h5 class="card-title"> {{ page_user.user.first_name }} {{ page_user.user.last_name }} </h5>
+                <p class="card-text"><strong> Bio: </strong> {{ page_user.bio }} </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item list-group-item-info">
+                    {% if page_user.facebook_url %}
+                        <a href="{{ page_user.facebook_url }}">Facebook</a>
+                    {% endif %}
+                </li>
+                <li class="list-group-item list-group-item-dark">
+                    {% if page_user.github_url %}
+                        <a href="{{ page_user.github_url }}">Github</a> 
+                    {% endif %}          
+              </ul>
+            </div>
         </div>
       </div>
     </div>
