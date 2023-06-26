@@ -60,10 +60,14 @@
                     <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                       {{ user.username }}
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end">
-                      <li><a class="dropdown-item" href="{% url 'show-profile' user.profile.id %}">View Profile</a></li>
-                      <li><a class="dropdown-item" href="{% url 'edit-profile-page' user.profile.id %}">Edit Profile</a></li>
-                      <li><a class="dropdown-item" href="{% url 'edit-profile' %}">Edit Credentials</a></li>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end"> 
+                      {% if user.profile.id %}
+                        <li><a class="dropdown-item" href="{% url 'show-profile' user.profile.id %}">View Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'edit-profile-page' user.profile.id %}">Edit Profile</a></li>                       
+                      {% else %}
+                        <li><a class="dropdown-item" href="{% url 'create-profile' %}">Create Profile</a></li>                        
+                      {% endif %}
+                      <li><a class="dropdown-item" href="{% url 'edit-profile' %}">Edit Credentials</a></li>                     
                     </ul>
                   </div>
                 {% endif %}
